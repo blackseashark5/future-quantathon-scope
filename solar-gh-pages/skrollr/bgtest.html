@@ -1,0 +1,546 @@
+
+<!DOCTYPE html>
+<html>
+<head class="no-skrollr">
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link href='http://fonts.googleapis.com/css?family=Dosis:200,400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-css-transform.js"></script>
+<script type="text/javascript" src="js/jquery-animate-css-rotate-scale.js"></script>
+<script type="text/javascript" src="js/entrance.js"></script>
+
+	<title>Space-Based Solar Power</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="bg_and_skrollr.css">
+		<style type="text/css">
+
+/*planets*/
+
+.planet {
+	margin: 0 auto;
+}
+/*div {
+	border: 1px solid black
+}*/
+#sun {
+	z-index: 53;
+	position: absolute; /*Is this the right thing? probably not*/
+	margin: 0 auto;
+	/*margin-top: -80%;*/
+}
+
+#sun img {
+	width: 120%;	
+	margin-top: -80%;
+	margin-left: -9%;
+}		
+/*UFO*/
+#ufo-container {
+	z-index: 65;
+	position: absolute;
+	top: 300px;
+	left: -100%;
+}
+
+#ufo {
+	z-index: 65;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: auto;
+}
+
+#ufo-beam {
+	opacity: 0;
+	z-index: 54;
+	position: absolute;
+	top: 83px;
+	left: 32px;
+	width: 111px;
+	height: 203px;
+	background-image:url('../images/final_images/beam.png');
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size: 111px 203px;	
+}
+
+.beam-none {
+	display: none;
+}
+
+			/*typography*/
+
+			.typography {
+				font-family: 'Dosis', sans-serif;				
+				text-align: center;
+			}
+
+			#top-box1 {
+				position: absolute;
+				z-index: 60;
+				top: 0px;
+				left: 0px;
+				width: 100%;
+				height: 140px;
+				background-color: rgba(0,0,0,0.75);
+			}
+
+			#top-box1 h1 {
+				font-size: 50px;
+				-webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+				-webkit-text-stroke-width: 1px;
+				-webkit-text-stroke-color: white;
+				color: white;
+				font-weight: bold;
+				padding-top: 45px;
+      		}
+
+			#top-box2 {
+				position: absolute;
+				z-index: 61;
+				top: 140px;
+				left: 0px;
+				width: 100%;
+				height: 70px;
+				background-color: rgba(0,0,0,0.5);
+			}
+
+			#top-box2 h2{
+				font-size: 22px;
+				color: white;
+				padding-top: 20px;
+				font-weight: lighter;
+				letter-spacing: 1px;
+			}
+
+/*Top Content block CSS*/
+
+.content-block {
+	z-index: 61;
+	position: relative;
+	text-align: center;
+	max-width: 360px;
+	height: 300px;
+	width: 96%;
+	margin: 0 auto;
+	background-color: rgba(0,0,0,0.5);	
+	padding-bottom: 20px;
+}
+
+.content-block p {
+	color: #ffffff;
+	font-size: 17px;
+	line-height: 23px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-left: 35px;
+	margin-right: 35px;
+}
+.content-block h2 {
+	font-family: 'Dosis', sans-serif;
+	font-size: 35px;
+	line-height: auto;
+	color: #f15a24;
+	text-transform: uppercase;
+	padding-top: 30px;	
+}
+
+#cb1 {top: 400px; left: 10%; position: relative;}
+#cb2 {top:450px; left: -25%; position: relative;}
+#cb3 {top:200px; left: 25%; position: relative;}
+
+
+/*First satellite */
+
+			#satellite-1-container {
+				position: absolute;
+				z-index: 52;
+				width: 100%;
+				/*background-color: rgba(0,0,0,0.4);*/
+				top: 1270px;
+			}
+
+			.floating-header {
+				position: relative;
+			}
+
+			.floating-header h3 {
+				font-family: 'Dosis', sans-serif;				
+				text-transform: uppercase;
+				font-size: 25px;
+				line-height: auto;
+				color: #f15a24;
+				text-shadow: -2px 3px #333;
+			}
+
+			.floating-header h3 span{
+				font-size: 35px;
+				margin-top: -10px;
+				font-weight: 200;
+				vertical-align: -10%;
+			}
+
+/*Earth!*/
+
+			#earth {
+				position:absolute;
+				bottom:0px;
+				z-index: 60;
+				margin: 0 auto;
+				height: auto;
+			}
+
+			#earth img {
+				width: 105%;
+				position: relative;
+				top: 3px;
+			}
+</style>
+<link rel="stylesheet" type="text/css" href="css/content.css">
+<link rel="stylesheet" type="text/css" href="css/responsive.css">
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-48744808-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+
+<body>
+	<div id="skrollr-body">
+		<div id="bg1" data-0="background-position:0px 0px;" 
+		data-end="background-position:00px -20000px;"></div>
+		<div id="bg2" data-0="background-position:0px 0px;" 
+		data-end="background-position:-500px -11000px;"></div>
+
+		<!-- <div id="progress" data-0="width:0%;background:rgb(64,74,76);" data-end="width:100%;background:rgb(255,123,0);"></div> -->
+
+		<div class="planet" id="sun">
+			<img src="../images/final_images/sun.png">
+		</div>
+
+		<div class="typography top-text" id="top-box1">
+			<h1>SPACE-BASED SOLAR POWER</h1>
+		</div>
+		<div class="typography top-text" id="top-box2">
+			<h2>Solar power directly from space may arrive sooner than you think.</h2>
+		</div>
+	
+
+		<div id="ufo-container">
+			<div id="ufo" class="">
+				<img src="../images/final_images/ufo.png">
+			</div>
+			<div id="ufo-beam" class=""></div>
+		</div>
+
+		<div id="comet-container">
+			<div id="comet" class="">
+				<img src="../images/final_images/icons_comet.png">
+			</div>
+		</div>
+
+
+		<!-- First content block -->
+		<div id="first-content">
+			<div class="content-block" id="cb1"
+				data-0="opacity:0.5;"
+				data-75="opacity:1;">
+					<h2>Did You Know?</h2>
+					<p>Every hour, more solar energy reaches the Earth than humans use in a year.</p>
+					<h2>About 30%</h2>
+					<p>of this energy is reflected back into space by the atmosphere.</p>
+			</div>
+			<div class="content-block" id="cb2"
+				data-0="opacity:0.25;"
+				data-150="opacity:0.25"
+				data-300="opacity:1;">
+					<h2>Waste Not</h2>
+					<p>Since clouds, atmosphere and nighttime are absent in space, satellite-based solar panels would be able to capture and transmit substantially more energy than terrestrial solar panels. </p>
+			</div>
+			<div class="content-block" id="cb3"
+				data-0="opacity:0.1;"
+				data-250="opacity:0.1"
+				data-400="opacity:1;">
+					<h2>How Does it Work?</h2>
+					<p>Solar panel equipped, energy transmitting satellites collect high intensity, uninterrupted solar radiation by using giant mirrors to reflect huge amounts of solar rays onto smaller solar collectors. This radiation is then wirelessly beamed to Earth in a safe and controlled way as either a microwave or laser beam.</p>
+					
+			</div>
+		</div>
+
+<!-- First Satellite -->
+		<div id="satellite-1-container">
+			<div id="satellite-1-header" class="floating-header">
+				<h3><span>{&nbsp;&nbsp;</span>Microwave Transmitting Solar Satellite<span>&nbsp;&nbsp;}</span></h3>
+			</div>
+		
+			<div id="sat-and-beam">
+				<div id="sat">
+					<div id="text-and-arrow1">
+						<div class="floating-text" id="floating-context-1">Sunlight reflects off these large mirrors into the center of the satellite</div>
+						<div id="arrow1"><span>&gt;</span></div>
+						<div id="arrow2"><span>v</span></div>
+					</div>					
+					<img src="../images/final_images/microwave.png">
+					<div id="text-and-arrow2">
+						<div id="arrow3"><div id="a1">&gt;</div><div id="a2">&lt;</div></div>
+						<div id="arrow4"><div id="a3">^</div></div>
+						<div class="floating-text" id="floating-context-2">Here the sunlight is transformed into uninterrupted microwave energy and beamed to Earth.</div>
+					</div>
+				</div>
+				<!-- <div id="sat-beam"></div> -->
+			</div>
+		</div>
+
+		<div id="distance-block">
+			<div id="distance-block-inner"
+				data-0="opacity:0.1;"
+				data-1200="opacity:0.1"
+				data-1500="opacity:1;">
+				<div id="distance-text" class="floating-header">
+					<h3>So... how far into space do</h3> <h3>microwave transmitting solar satellites need to go?</h3>
+				</div>
+				<div id="distance-graphics">
+					<div id="distance-legend">
+						<div class="distance-tick" id="distance-tick1"></div>
+						<div id="distance-legend-dashed">
+							<div id="distance-legend-text">
+								384,400 KM
+							</div>
+						</div>					
+						<div class="distance-tick" id="distance-tick2"></div>
+					</div>
+					<div id="distance-bodies-container">
+						<div id="distance-legend-earth">
+							<div class="distance-legend-earth-arrow"></div>
+							<div class="theearthtext">THE EARTH</div>
+						</div>
+						<div id="distance-legend-microwave">
+							<div id="distance-legend-microwave-arrow1">
+								<div id="distance-legend-microwave-text1">
+									<div id="s1">
+										<p>THE SATELLITE:</p>
+										<p><span>35,000 KM</span></p>
+										<p>away from</p>
+										<p>the Earth</p>
+									</div>
+									<div id="s2"<p>THE SATELLITE</p></div>
+								</div>
+								<div id="distance-legend-microwave-arrow2">
+									<div id="distance-legend-microwave-text2">
+										<p>This distance is called</p>
+										<p>geostationary orbit</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="distance-legend-moon">
+							<div id="distance-legend-moon-arrow"></div>
+							<div id="themoontext">THE MOON</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="laser-container">
+			<div id="satellite-2-header" class="floating-header">
+				<h3><span>{&nbsp;&nbsp;</span>Laser Transmitting Solar Satellite<span>&nbsp;&nbsp;}</span></h3>
+			</div>
+			<div id="laser-content">
+				<div id="laser-left">
+					<div id="laser-left-text">These satellites would operate as a group with other similar satellites, due to their small size.</div>
+					<div id="laser-left-mini-lasers">
+						<div class="mini-crazy-lazers" id="l1"></div>
+						<div class="mini-crazy-lazers" id="l2"></div>
+						<div class="mini-crazy-lazers" id="l3"></div>
+					</div>
+					<div id="laser-left-large">
+						<img src="../images/final_images/laser.png">
+						<div id="laser-left-beam"></div>
+					</div>
+				</div>
+				<div id="laser-right">
+					<div id="laser-right-title">How far out are the<br> laser transmitting satellites?</div>
+					<div id="laser-right-legend">
+						<div id="laser-right-earth">
+							<div id="earth-arrow2" class="distance-legend-earth-arrow"></div>
+							<div id="earth-text2" class="theearthtext">THE EARTH</div>
+							<div id="laser-arrow">
+								<div id="laser-text">
+								<h3>LASER SATELLITE</h3>
+								<p>400 KM</p>
+							</div>
+							</div>
+						</div>
+						<!-- <div id="laser-right-laser-location"></div> -->
+						<div id="laser-right-microwave">
+							<div id="laser-right-microwave-arrow">
+								<div id="laser-right-microwave-arrow-text">
+									Microwave Satellite<br> (35,000 KM)
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="pros-cons-container">
+			<div class="half-tab" id="left-tab">
+				<div class="floating-header"><h3><span>{</span>Laser Solar Satellites<span>}</span></h3></div>
+			</div>
+			<div class="half-tab" id="middle-tab">
+				<div class="floating-header"><h3><span></span>VS<span></span></h3></div>
+			</div>
+			<div class="half-tab" id="right-tab">
+				<div class="floating-header"><h3><span>{</span>Microwave Solar Satellites<span>}</span></h3></div>
+			</div>
+						<div id="mini-laser" class="planet"
+				data-2000="left: -50%;"
+				data-2400="left: 0;"
+			>
+				<div id="mini-laser-inner">
+					<img src="../images/final_images/laser2.png">
+				</div>
+			</div>
+			<div id="mini-microwave" class="planet"
+				data-2000="right: -50%;"
+				data-2400="right: 0;"
+			>
+				<div id="mini-microwave-inner">
+					<img src="../images/final_images/microwave2.png">
+				</div>
+			</div>
+
+
+			<div id="yessir1">
+				<div class="left-pro procontext" >
+					<div class="left-text-container"
+						data-2300="left:-50%; opacity: 0;"
+						data-2600="left:0; opacity:1"
+					>
+						<p>Relatively low startup costs in the $500 million to $1 billion range.</p>
+						<p>The single launch per laser transmitting satellite would be self assembling, lowering costs and risks substantially.</p>
+						<p>The small diameter of the laser beam would make it simpler and cheaper to implement on the ground.</p>
+					</div>
+				</div>
+				<div class="middle-pro">
+					<div id="middle-pro-inner"
+						data-2300="top: -2000px; opacity: 0; display:none;"
+						data-2301="display:block;"
+						data-2600="top:30px; opacity:1"
+					> 
+						<div class="pro-con-title">P</div>
+						<div class="pro-con-title">R</div>
+						<div class="pro-con-title">O</div>
+						<div class="pro-con-title">S</div>
+					</div>
+				</div>
+				<div class="right-pro procontext">
+					<div class="right-text-container"
+						data-2300="right:-50%; opacity: 0;"
+						data-2600="right:0; opacity:1"
+					>
+						<p>Steady, uninterrupted transmission of power through rain, clouds, and other atmospheric conditions.</p>
+						<p>Safely transmit power through air at intensities no greater than midday sun.</p>
+						<p>Provide upwards of 1 GW of energy to terrestrial reciever, enough to power a large city.</p>
+					</div>
+				</div>
+			</div>
+			<div id="proconspacer">
+				<div id="insidespacer"></div>
+			</div>
+			<div id="yessir2">
+				<div class="left-pro procontext">
+					<div class="left-text-container"
+						data-2400="left:-50%; opacity: 0;"
+						data-2700="left:0%; opacity:1"
+					>
+						<p>Comparatively low power of each individual satellite, in the area of 1 to 10 MW per satellite, would require several satellite to make a substantial impact.</p>
+						<p>There are several safety concerns with lasers in space, such as blinding and weaponization.</p>
+						<p>Laser transmitting satellites would have trouble beaming power through heavy clouds and rain.</p>
+					</div>
+				</div>
+				<div class="middle-pro">
+					<div id="middle-con-inner"
+						data-2400="top: -2000px; opacity: 0; display:none;"
+						data-2401="display:block;"
+						data-2700="top:30px; opacity:1"
+					>
+						<div class="pro-con-title">C</div>
+						<div class="pro-con-title">O</div>
+						<div class="pro-con-title">N</div>
+						<div class="pro-con-title">S</div>
+					</div>
+				</div>
+				<div class="right-pro procontext">
+					<div class="right-text-container"
+						data-2400="right:-50%; opacity: 0;"
+						data-2700="right:0; opacity:1"
+					>
+						<p>Production cost in the tens of billions of dollars range, requiring as many as 100 launches into space, with space based assembly required.</p>
+						<p>The terrestrial receiver would be several kilometers in diameter.</p>
+						<p>The long distance of the satellite from Earth would make it nearly impossible to repair.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="earth">
+			<img src="../images/final_images/earth.png">
+		</div>
+		<div id="earth-moon-container">
+			<div id="earth-moon"></div>
+		</div>
+<!-- 		<div id="final-mini-satellite-container">
+			<div id="final-mini-satellite">
+				<div id="final-mini-satellite-beam"></div>
+			</div>
+		</div> -->
+		
+	</div>
+	<script type="text/javascript" src="js/skrollr.min.js"></script>
+
+	<script type="text/javascript">
+	//http://detectmobilebrowsers.com/ + tablets
+	(function(a) {
+		if(/android|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(ad|hone|od)|iris|kindle|lge |maemo|meego.+mobile|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino|playbook|silk/i.test(a)
+		||
+		/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(di|rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4)))
+		{
+			//Add skrollr mobile on mobile devices.
+			document.write('<script type="text/javascript" src="../../dist/skrollr.mobile.min.js"><\/script>');
+		}
+	})(navigator.userAgent||navigator.vendor||window.opera);
+	</script>
+
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="../../dist/skrollr.ie.min.js"></script>
+	<![endif]-->
+
+	<script type="text/javascript">
+	var s = skrollr.init();
+
+
+// Spin the globes, yo
+$(document).ready(function sunAnimation() {
+    $("#sun img").
+      animate({rotate:'+=360deg'},100000, sunAnimation);                
+});
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,326 @@
+
+@media (max-width:860px){
+	/*#arrow1 span {display: block ;}
+	#arrow2 { display: none;}*/
+	#sat img {
+		margin-top: -15px;
+	}
+	.right-text-container, .left-text-container {
+		width: 95%;
+	}
+}
+
+@media (max-width:790px){
+
+	#sun img{
+		margin-top: -70% ;
+	}
+
+	#cb1 {top:300px ; left:14% }
+	#cb2 {top:325px ; left: -14% }
+	#cb3 {top:350px ; left: 14% }
+
+
+	/*Lasers!!!*/
+	#laser-left {width: 100%}
+	#laser-right {
+		width: 100%;
+		top: 180px;
+	}
+	#laser-right-legend {
+		margin: 0 auto;
+		float: none;
+		width: 95%;
+		left: 0px;
+	}
+	#laser-left-large img {
+		width: 60%;
+	}
+	#laser-right-title {
+		float: none;
+		margin: 0 auto;
+		left: auto;
+	}
+	#laser-left-large {
+		right: 40px;
+		top: -40px;
+	}
+	#laser-left-beam {
+		top: 4.1%;
+		left: 50%;
+		width: 247%
+	}
+	/*Move the big blocks*/
+	#satellite-1-container {top: 1360px ;}
+	#distance-block {top: 1820px;}
+	#laser-container {top: 2130px;}
+	#pros-cons-container {top: 2850px;}
+
+}
+
+@media (max-width:700px){
+	
+	#top-box1 {
+		height: 100px ;
+	}
+
+	#top-box1 h1 {
+		font-size: 40px ;
+		padding-top: 30px ;
+	}
+
+	#top-box2 {
+		top: 100px ;
+		height: 55px ;
+	}
+
+	#top-box2 h2{
+		font-size: 18px ;
+		padding-top: 18px ;
+		letter-spacing: 0px ;
+	}
+
+/*mircowave satellite 1*/
+	.floating-text { 
+		width: 50%;
+	}
+
+	#arrow1 {
+		width: 48%;
+	}
+
+	#arrow2 {
+		width: 1%;
+	}
+	#text-and-arrow2 {
+		left: 90%;
+	}
+	#floating-context-2 {
+		margin-left:-35px;
+		clear: both;
+		margin-top: 7px;
+	}
+	#arrow4 {
+		margin-left: 32px;
+	}
+	
+	#a1 {display: none}
+	#a2 {
+		display: block;
+		margin-left: -7px !important;
+	}
+	/*Microwave distance*/
+	#distance-legend-microwave-arrow2 {
+		display: none;
+	}
+	#laser-left-large {
+		right: 30px;
+		top: 0px;
+	}
+	#laser-left-beam {
+		top:4.8%;
+		left:50.5%;
+		width: 221%;
+	}
+}
+
+@media (max-width:570px){
+	/*#container {
+		height: 320px;	
+	}*/
+	#sun img{
+		margin-top: -50% ;
+	}
+	
+	#top-box1 {
+		height: 80px ;
+	}
+
+	#top-box1 h1 {
+		font-size: 30px ;
+		padding-top: 25px ;
+	}
+
+	#top-box2 {
+		top: 80px ;
+	}
+
+	#top-box2 h2{
+		font-size: 18px ;
+		padding-top: 18px ;
+		letter-spacing: 0px ;
+	}
+	#top-box2 h2{
+		font-size: 18px ;
+		padding-top: 8px ;
+		letter-spacing: 0px ;
+	}
+
+/*manipulate ufo parts*/
+
+	 #ufo	{
+	 	left: -20px ;
+	 }
+
+	 #ufo-beam {
+	 	left: 9px ;
+	 }
+
+/*microwaves*/
+	.floating-text { 
+		width: 60%;
+	}
+
+	#arrow1 {
+		width: 38%;
+	}
+
+	#arrow2 {
+		width: 1%;
+	}
+	#distance-graphics {
+		width: 90%;
+	}
+/*lasers*/
+	
+
+	#laser-left-large img {
+		width: 70%;
+	}
+	#laser-left-text {
+		left: 10%;
+	}
+	#laser-left-mini-lasers {
+		left: 10%;
+	}
+	#laser-left-beam {
+		top: 5.5%;
+		left: 60%;
+		width: 224%;
+	}
+	html, body {height: 3950px !important;}
+	#skrollr-body {height: 3950px !important;}
+}
+
+@media (max-width:480px){
+/*	#container {
+		height:255px ;
+	}*/
+	#top-box1 h1 {
+		padding-top: 12px ;
+	}
+
+	.content-block {
+		height: auto ;
+	}
+
+	.content-block h2{
+		padding-top: 20px ;
+	}
+
+	.content-block p {
+		margin-left: 10px ;
+		margin-right: 10px ;
+	}
+/*first content blocks*/
+	#cb1 {left:	0 ; top: 500px ;}
+	#cb2 {left:	0 ; top:525px ;}
+	#cb3 {left:	0 ; top: 550px ;}
+
+/*UFos!*/
+	#ufo	{top: -100px ; left: 20px }
+
+	#ufo-beam {top: -18px ; left: 50px  }
+
+/*first satellite*/
+	.floating-header {left: 0px !important; text-align: center;}
+	.floating-header h3 span{ display: none; }
+
+	#sat img {
+		margin-top: 55px;
+	}
+	#text-and-arrow1 {
+		width: 52%;
+	}
+	.floating-text { 
+		width: 90%;
+	}
+
+	#arrow1 {
+		width: 8%;
+	}
+
+	#arrow2 {
+		width: 1%;
+		height: 50px;
+		line-height: 100px;
+	}
+
+	#sat 	{
+		width: 65%;
+	}
+	#text-and-arrow2 {
+		left: 50%;
+	}
+	#floating-context-2 {
+		margin-left:-90px;
+		clear: both;
+		margin-top: 7px;
+	}
+	#arrow3 {display: none;}
+	#arrow4 {margin-left: 90px;height: 50px;margin-top: 10px;}
+	
+	#a1 {display: none}
+	#a2 {
+		display: block;
+		margin-left: -7px !important;
+	}
+	#a3 {
+		display: block;
+		color: #fff;
+		font-size: 9px;
+		margin-top: -8px;
+		margin-left: -3px;
+	}
+	#distance-text h3 {
+		font-size: 18px;
+		line-height: 25px;
+	}
+	#distance-text {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	/*lasers*/
+	#laser-left-large {
+		right:-5px;
+		top: 60px;
+	}
+	#laser-arrow {
+		left: 58px;
+		width: 56px;
+		background-position: left;
+	}
+	#laser-text {
+		width: 76px;
+		left: 80%
+	}
+	#yessir2 {top: 35px; position: relative;}
+	#proconspacer #insidespacer {position: relative;top: 40px;}
+
+
+	/*pros and cons*/
+	.right-text-container, .left-text-container {font-size: 14px; line-height: 16px; width: 98%;}
+}
+
+
+@media (max-width:339px) {
+	#s1 {display: none}
+	#s2	{display: block;}	
+}
+
+
+@media (max-width:320px){
+}
+
+
+

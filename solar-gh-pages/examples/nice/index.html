@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html>
+<head class="no-skrollr">
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+	<title>Nice aka Straight Up</title>
+	<link rel="stylesheet" type="text/css" href="../reset.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-css-transform.js"></script>
+	<script type="text/javascript" src="../js/jquery-animate-css-rotate-scale.js"></script>
+    <script type="text/javascript" src="../js/entrance.js"></script>
+	<style type="text/css">
+	
+
+	</style>
+</head>
+
+<body>
+    <div id="container">
+    	<div id="space-body">
+    		<div class="planet" id="sun">
+    			<img src="../images/final_images/sun.png">
+    		</div>
+            <div id="ufo" class="">
+            </div>
+            <div id="moveMe2" class="planet2">
+            
+            </div>
+            <div id="moveMe3" class="planet3">
+            
+            </div>
+
+            <div class="satellite"
+                data-0="left:-40%;"
+                data-500="left:20%;"
+            ></div>
+            <div id="sat2" class="satellite"
+                data-200="right:-40%;"
+                data-700="right:20%;"
+            ></div>
+
+
+    		<div class="planet" id="earth">
+    			<img src="../images/planet1.png">
+    		</div>
+    	</div>
+    </div>
+    
+    <script type="text/javascript" src="../skrollr/skrollr.min.js"></script>
+
+
+	<script type="text/javascript">
+	// var s = skrollr.init();
+
+
+// Spin the globes, yo
+$(document).ready(function sunAnimation() {
+    $("#sun").
+      animate({rotate:'+=30deg'},2200, sunAnimation);
+	$("#earth").
+      animate({rotate:'+=36000deg'},300000);      
+    // $(".planet2").
+    //   animate({rotate:'-=36000deg'},300000);            
+    // $(".planet3").
+    //   animate({rotate:'+=36000deg'},300000);                  
+});
+
+	</script>
+
+	<script type="text/javascript">
+	
+    var ElementRevolver = (function() {
+    
+    function getPosition(settings, ellapsedTime) {
+        var angle = getAngle(settings, ellapsedTime);
+        return {
+            x: Math.round(settings.center.x + settings.xradius * Math.cos(angle)),
+            y: Math.round(settings.center.y + settings.yradius * Math.sin(angle))
+        };
+    }
+    
+    function getAngle(settings, ellapsedTime) {
+        return ellapsedTime / settings.interval * 2 * Math.PI * settings.direction - settings.startPositionRad;
+    }
+    
+    function start(id, settings) {
+        var el = document.getElementById(id),
+            startTime = (new Date()).getTime(),
+            width = el.offsetWidth,
+            height = el.offsetHeight;
+        if(el['#rev:tm'] !== null) stop(id);
+        el.style.position = settings.cssPosition || 'absolute';
+        if(!settings.startPositionRad) settings.startPositionRad = settings.startPositionDeg / 180 * Math.PI;
+        el['#rev:tm'] = setInterval(function() {
+            var pos = getPosition(settings, (new Date()).getTime() - startTime);
+            el.style.left = (pos.x - Math.round(width / 2)) + 'px';
+            el.style.top = (pos.y - Math.round(height / 2)) + 'px';
+        }, settings.updateInterval);
+        if(settings.iterations > -1) setTimeout(function() {
+            stop(id);
+        }, settings.iterations * settings.interval);
+    }
+    
+    function stop(id) {
+        var el = document.getElementById(id);
+        if(el['#rev:tm'] === null) return;
+        clearInterval(el['#rev:tm']);
+        el['#rev:tm'] = null;
+    }
+    
+    return {
+        start: start,
+        stop: stop
+    };
+    
+})();
+
+var center_planet = (document.body.clientWidth) / 2;
+
+$(window).resize(function(){
+
+    });
+
+
+// ElementRevolver.start('moveMe', {
+//     xradius: 400,
+//     yradius: 400,
+//     center: { x: center_planet, y: 1600 },
+//     // time in milliseconds for one revolution
+//     interval: 19000,
+//     // direction = 1 for clockwise, -1 for counterclockwise
+//     direction: 1,
+//     // number of times to animate the revolution (-1 for infinite)
+//     iterations: -1,
+//     // startPosition can be a degree angle
+//     // (0 = right, 90 = top, 180 = left, 270 = bottom)
+//     startPositionDeg: 90,
+//     // how often (in milliseconds) the position of the
+//     // circle should be attempted to be updated
+//     updateInterval: 50
+// });
+
+ElementRevolver.start('moveMe2', {
+    xradius: 300,
+    yradius: 100,
+    center: { x: center_planet - 100, y: 1550 },
+    interval: 8000,
+    direction: 1,
+    iterations: -1,
+    startPositionDeg: 90,
+    updateInterval: 50
+}); 
+
+ElementRevolver.start('moveMe3', {
+    xradius: 50,
+    yradius: 50,
+    center: { x: center_planet - 100, y: 1000 },
+    interval: 22000,
+    direction: 1,
+    iterations: -1,
+    startPositionDeg: 90,
+    updateInterval: 50
+});
+
+//Change z-index for 3d effect
+    
+// $(document).ready(function (){    
+//     changeZindex();
+    
+// });
+
+//     function changeZindex() {
+//         $(".planet2").delay(4000).addClass('lowz').delay(4000).removeClass('lowz').delay(4000);
+//         // changeZindex();
+//         console.log('zindex')
+//     };
+    
+
+
+	</script>
+
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../../dist/skrollr.ie.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+    var s = skrollr.init();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1443 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+html, body {
+	font-family: 'Open Sans', sans-serif;
+	height: 4100px !important;
+}
+
+
+#container {
+	width: 90%;
+	max-width: 900px;
+	height: 3000px;
+	z-index: 102;
+	margin: 10px;
+	margin-top: 0px;
+	overflow: hidden !important; 
+}
+	#skrollr-body {
+		position: relative;
+		width: 100%;
+		height: 4100px;
+		overflow-x:hidden;
+		overflow-y: hidden; 
+		/*edit to get rid of double bar*/
+	}
+
+
+.skrollable {
+	/*
+	 * First-level skrollables are positioned relative to window
+	 */
+	position:fixed;
+
+	/*
+	 * Skrollables by default have a z-index of 100 in order to make it easy to position elements in front/back without changing each skrollable
+	 */
+	z-index:100;
+}
+
+.skrollr-mobile .skrollable {
+	/*
+		May cause issues on Android default browser (see #331 on GitHub).
+	*/
+	position:absolute;
+}
+
+.skrollable .skrollable {
+	/*
+	 * Second-level skrollables are positioned relative their parent skrollable
+	 */
+	position:absolute;
+}
+
+.skrollable .skrollable .skrollable {
+	/*
+	 * Third-level (and below) skrollables are positioned static
+	 */
+	position:static;
+}
+	
+	#bg1, #bg2, #bg3 {
+	position: absolute;
+	z-index:50;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+
+#bg1 {
+	background:url(../images/final_images/stars_gray.png) repeat 0 0;
+	opacity: .6;
+}
+
+#bg2 {
+	z-index:49;
+	background-image:url(../images/final_images/stars_yel.png);
+}
+
+/*#bg3 {
+	z-index:51;
+	background-image:url(../images/final_images/stars_small.png);
+}*/
+
+#progress {
+	height:1%;
+	background:#444;
+	bottom:0;
+	z-index:200;
+}
+
+
+/*planets*/
+
+.planet {
+	margin: 0 auto;
+}
+/*div {
+	border: 1px solid black
+}*/
+#sun {
+	z-index: 53;
+	position: absolute; /*Is this the right thing? probably not*/
+	margin: 0 auto;
+	/*margin-top: -80%;*/
+}
+
+#sun img {
+	width: 120%;	
+	margin-top: -80%;
+	margin-left: -9%;
+}		
+/*UFO*/
+#ufo-container {
+	z-index: 65;
+	position: absolute;
+	top: 300px;
+	left: -100%;
+}
+
+#ufo {
+	z-index: 65;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: auto;
+}
+
+#ufo-beam {
+	opacity: 0;
+	z-index: 54;
+	position: absolute;
+	top: 83px;
+	left: 32px;
+	width: 111px;
+	height: 203px;
+	background-image:url('images/final_images/beam.png');
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size: 111px 203px;	
+}
+
+.beam-none {
+	display: none;
+}
+
+			/*typography*/
+
+			.typography {
+				font-family: 'Dosis', sans-serif;				
+				text-align: center;
+			}
+
+			#top-box1 {
+				position: absolute;
+				z-index: 60;
+				top: 0px;
+				left: 0px;
+				width: 100%;
+				height: 140px;
+				background-color: rgba(0,0,0,0.75);
+			}
+
+			#top-box1 h1 {
+				font-size: 50px;
+				-webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+				-webkit-text-stroke-width: 1px;
+				-webkit-text-stroke-color: white;
+				color: white;
+				font-weight: bold;
+				padding-top: 45px;
+      		}
+
+			#top-box2 {
+				position: absolute;
+				z-index: 61;
+				top: 140px;
+				left: 0px;
+				width: 100%;
+				height: 70px;
+				background-color: rgba(0,0,0,0.5);
+			}
+
+			#top-box2 h2{
+				font-size: 22px;
+				color: white;
+				padding-top: 20px;
+				font-weight: lighter;
+				letter-spacing: 1px;
+			}
+
+/*Top Content block CSS*/
+
+.content-block {
+	z-index: 61;
+	position: relative;
+	text-align: center;
+	max-width: 360px;
+	height: 300px;
+	width: 96%;
+	margin: 0 auto;
+	background-color: rgba(0,0,0,0.5);	
+	padding-bottom: 20px;
+}
+
+.content-block p {
+	color: #ffffff;
+	font-size: 17px;
+	line-height: 23px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-left: 35px;
+	margin-right: 35px;
+}
+.content-block h2 {
+	font-family: 'Dosis', sans-serif;
+	font-size: 35px;
+	line-height: auto;
+	color: #f15a24;
+	text-transform: uppercase;
+	padding-top: 30px;	
+}
+
+#cb1 {top: 400px; left: 10%; position: relative;}
+#cb2 {top:450px; left: -25%; position: relative;}
+#cb3 {top:200px; left: 25%; position: relative;}
+
+
+/*First satellite */
+
+			#satellite-1-container {
+				position: absolute;
+				z-index: 52;
+				width: 100%;
+				/*background-color: rgba(0,0,0,0.4);*/
+				top: 1270px;
+			}
+
+			.floating-header {
+				position: relative;
+			}
+
+			.floating-header h3 {
+				font-family: 'Dosis', sans-serif;				
+				text-transform: uppercase;
+				font-size: 25px;
+				line-height: auto;
+				color: #f15a24;
+				text-shadow: -2px 3px #333;
+			}
+
+			.floating-header h3 span{
+				font-size: 35px;
+				margin-top: -10px;
+				font-weight: 200;
+				vertical-align: -10%;
+			}
+
+/*Earth!*/
+
+			#earth {
+				position:absolute;
+				bottom:0px;
+				z-index: 60;
+				margin: 0 auto;
+				height: auto;
+			}
+
+			#earth img {
+				width: 105%;
+				position: relative;
+				top: 3px;
+			}
+
+
+/*div {
+	border: 1px solid black;
+}*/
+
+			#satellite-2-header, #satellite-1-header {left:8%;}
+
+			/*Microwve Satellite*/
+			#sat-and-beam {
+				z-index: 59;
+				position: absolute;
+				top: 50px;
+				right: 0;
+				width: 100%;
+				height: 100px;
+				/*background-color: rgba(4,4,4,0.5);*/
+			}
+
+			#sat {
+				z-index: 60;
+				top: 0px;
+				left: 0px;
+				/*background-color: rgba(40,4,4,0.5);*/
+				width: 50%;
+				margin: 0px auto;
+			}
+			#sat img {
+				width: 100%;
+				margin-top: -60px; 
+			}
+
+			#text-and-arrow1 {
+				left: 05%;
+				position: absolute;
+				width: 35%;
+				/*background-color: red;*/
+			}
+
+			#arrow1 {
+				border-bottom: 1px dashed white; 
+				width: 58%;
+				height: 15px;
+				float: left;
+				/*background-color: pink;*/
+				top: 0px;
+			}
+			#arrow2 {
+				border-left: 1px dashed white; 
+				width: 1%;
+				margin-top: 15px;
+				height: 25px;
+				float: left;
+				/*background-color: pink;*/
+				top: 0px;
+				color: #fff;
+				font-size: 9px;
+				line-height: 56px;
+			}
+
+			#arrow1 span {
+				display: none;
+				left: 5px;
+				top: 11px;
+				position: relative;
+				float: right;
+				color: #fff;
+				font-size: 9px;
+			}
+
+			#arrow2 span {margin-left: -3px;}
+
+			#text-and-arrow2 {
+				left: 50%;				
+				position: relative;
+				margin-left:-50px;
+			}
+
+			#arrow3 {
+				border-top: 1px dashed white; 
+				height: 1px;
+				margin-top: -60px;
+				float: left;
+				width: 30px;
+				color: #ffffff;
+				font-size: 9px;
+				/*line-height: -10px;*/
+			}
+
+			#arrow3 div {
+				margin-left: 30px;
+				top: -5px;
+				position: relative;
+			}
+
+			#a2, #a3 {display: none;}
+
+
+			#arrow4 {
+				border-left: 1px dashed white; 
+				height: 100px;
+				float: left;
+				/*background-color: pink;*/
+				margin-top: -60px;
+				clear: both;
+			
+			}
+
+			#floating-context-1 {
+				
+				/*margin-left: -45%*/
+			}
+
+			#floating-context-2 {
+			margin-left:-50px;	
+				margin-top: 50px;
+			}
+
+			.floating-text {
+				color: #ffffff;
+				width: 40%;
+				text-align: center;
+				font-weight: 200;
+				font-size: 17px;
+				/*background-color: orange;*/
+				float: left;
+			}
+
+/*DISTANCE FOR MICROWAVE*/
+
+			#distance-block {
+				position: absolute;
+				width: 100%;
+				/*height: 300px;*/
+				top: 1850px;
+				z-index: 60;
+				margin: 0 auto;
+				font-family: 'Dosis', sans-serif;				
+			}	
+
+			#distance-block-inner {
+				position: relative;
+				width: 94%;
+				height: 100%;
+				margin: 0 auto;
+				background-color: rgba(0,0,0,0.5);	
+			}
+
+			#distance-text {
+				text-align: center;
+				padding-top: 15px;
+				padding-left: 20px;
+				padding-right: 20px;
+				padding-bottom: 20px;
+				line-height: 36px;		
+				margin: 0 auto;	
+				left: 0px;	
+			}
+
+			#distance-graphics {
+				width: 92%;
+				margin: 0 auto;
+			}
+
+			#distance-legend {
+				width: 100%;
+				font-family: 'Dosis', sans-serif;
+				height: 30px;				
+			}
+
+			.distance-tick {				
+				width: 1%;
+				height: 10px;
+				position: relative;
+			}
+
+			#distance-tick1 {
+				border-right: 1px solid white;
+				float: left;
+				top: 1px;
+			}
+
+			#distance-tick2 {
+				border-left: 1px solid white;
+				float: right;
+				top: -1px;
+				right: -1px;
+			}
+
+			#distance-legend-dashed {
+				border-bottom: 1px dashed white;
+				width: 98%;
+				height: 1px;
+				position: relative;
+				float: left;
+				top: 5px;
+			}
+
+			#distance-legend-text {
+				background-color: #414A4C;
+				color: #fff;
+				margin: 0 auto;
+				width: 90px;
+				line-height: 25px;
+				text-align: center;
+				font-size: 16px;
+				top: -11px;
+				position: relative;
+				letter-spacing: 1px;
+			}
+
+			#distance-bodies-container {
+				width: 100%;
+				height: 130px;
+			}
+
+			#distance-legend-earth {
+				left: -3px;
+				position: relative;
+				float: left;
+				width: 26px;
+				height: 26px;
+				background-image:url('../images/final_images/earth_tiny.png');
+				background-repeat:no-repeat;
+				background-position:center;
+				background-size: 26px 26px;
+			}
+
+			.distance-legend-earth-arrow {
+				top: 29px;
+				left: -11px;
+				position: relative;
+				width: 15px;
+				height: 52px;
+				background-image:url('../images/final_images/arrows/blue.png');
+				background-repeat:no-repeat;
+				background-position:center;
+				background-size: 15px 52px;
+			}
+
+			#distance-legend-moon-arrow {
+				top: 15px;
+				left: 10px;
+				position: relative;
+				width: 16px;
+				height: 52px;
+				background-image:url('../images/final_images/arrows/yellow.png');
+				background-repeat:no-repeat;
+				background-position:center;
+				background-size: 16px 52px;	
+			}
+
+			#distance-legend-microwave-arrow1 {
+				top: 0px;
+				left: 28px;
+				position: relative;
+				width: 79px;
+				height: 21px;
+				background-image:url('../images/final_images/arrows/orange1.png');
+				background-repeat:no-repeat;
+				background-position:center;
+				background-size: 79px 21px;	
+			}
+
+			#distance-legend-microwave-arrow2 {
+				top: 0px;
+				left: 130px;
+				position: relative;
+				width: 94px;
+				height: 23px;
+				background-image:url('../images/final_images/arrows/orange2.png');
+				background-repeat:no-repeat;
+				background-position:center;
+				background-size:94px 23px;	
+			}
+
+
+			#distance-legend-microwave-text1 {
+				position: relative;
+				left: 30px;
+				top: 30px;
+				color: #fff;
+				text-align: center;
+				width: 110px;
+				line-height: 110%;
+
+			}
+
+			#distance-legend-microwave-text1 span {color: #f15a24;}
+
+			#distance-legend-microwave-text2 {
+				position: relative;
+				left: 35px;
+				top: -15px;
+				color: #fff;
+				text-align: center;
+				width: 275px;
+			}
+
+			#distance-legend-moon {
+				top: 5px;
+				left: -5px;
+				position: relative;
+				float: right;
+				width: 8px;
+				height: 9px;
+				background-image:url('../images/final_images/moon_tiny.png');
+				background-repeat:no-repeat;
+				background-position:center;
+				background-size: 8px 9px;
+			}
+
+			#distance-legend-microwave {
+				left: 10%;
+				top: 2px;
+				position: relative;
+				float: left;
+				width: 26px;
+				height: 26px;
+				background-image:url('../images/final_images/satellite_tiny.png');
+				background-repeat:no-repeat;
+				background-position:center;
+				background-size: 26px 26px;		
+			}
+
+			.theearthtext {
+				position: relative;
+				left: 10px;
+				top: 20px;
+				width: 100px;
+				color: rgb(0,189,255);
+			}
+
+			#themoontext {
+				position: relative;
+				left: -65px;
+				top: 5px;
+				width: 100px;
+				color: rgb(255,253,164)
+			}
+			#s2 {display: none;}
+
+/*Lasers!*/
+
+			#laser-container {
+				position: absolute;
+				width: 100%;
+				height: 600px;
+				top: 2200px;
+				z-index: 60;
+			}	
+
+			#laser-left {
+				width: 50%;
+				height: 30px;
+				float: left;
+				position: relative;
+			}
+			#laser-right {
+				width: 50%;
+				height: 30px;
+				float: left;
+				position: relative;
+			}
+			#laser-left-text {
+				color: #fff;
+				width: 180px;
+				position: absolute;
+				top: 50px;
+				left: 20%;
+				text-align: center;
+				line-height: 23px;
+			}
+			#laser-left-mini-lasers {
+				position: absolute;
+				left: 20%;
+				width: 100px;
+				top:190px;
+				height: 100px;
+/*				background-color: rgba(0,250,0,.4);
+*/			}
+
+			.mini-crazy-lazers {
+				position: absolute;
+				float: left;
+				width: 42px;
+				height: 78px;
+				background-image:url('../images/final_images/mini_laser1.png');
+				background-repeat:no-repeat;
+				background-position:center;
+				background-size: 42px 78px;			
+			}
+
+			#l1 {
+				left: 0%;
+				top: 20px;
+				transform:rotate(-20deg);
+				-ms-transform:rotate(-20deg); /* IE 9 */
+				-webkit-transform:rotate(-20deg); /* Opera, Chrome, and Safari */
+			}
+			#l2 {
+				left: 63%;
+				top: -30px;
+				
+			}
+			#l3 {
+				left: 100%;
+				top: 30px;
+				transform:rotate(+20deg);
+				-ms-transform:rotate(+20deg); /* IE 9 */
+				-webkit-transform:rotate(+20deg); /* Opera, Chrome, and Safari */
+			}
+
+			#laser-left-large {
+				position: relative;
+				float: right;
+				/*background-color: rgba(20,20,100,.4);*/
+				width: 40%;
+			}
+
+			#laser-left-large img {
+				width: 100%;
+				height: auto;
+			}
+
+			#laser-left-beam {
+				/*opacity: 0;*/
+				z-index: 54;
+				position: absolute;
+				top: 0px;
+				top: 4.5%;
+				left: 85%;
+				width: 100%;
+				height: 100%;
+				/*background-color: rgba(250,0,90,0.4);*/
+				width: 390%;
+				background-image:url('../images/final_images/laser_beam.png');
+				background-repeat:no-repeat;
+				background-position: left top;
+				background-size: 100% auto;		
+			}
+
+			#laser-right-title {
+				color: #fff;
+				text-transform: uppercase;
+				font-family: 'Dosis', sans-serif;				
+				letter-spacing: 1px;
+				font-size: 20px;
+				text-align: center;
+				color: #f15a24;
+				position: relative;
+				float: left;
+				width: 200px;
+				top: 120px;
+				left: -10px;
+				text-shadow: -2px 3px #333;
+				line-height: 24px;
+			}
+
+			#laser-right-legend {
+				position: relative;
+				float: left;
+				width: 90%;
+				top: 160px;
+				left: 20px;
+			}
+
+			#laser-right-earth {
+				position: relative;
+				float: left;
+				width: 133px;
+				height: 123px;
+				background-image:url('../images/final_images/earth_and_sat.png');
+				background-repeat:no-repeat;
+				background-position:center;
+				background-size: 133px 123px;
+
+			}
+			#laser-right-microwave {
+				position: relative;
+				float: right;
+				width: 26px;
+				height: 26px;
+				top: 37px;
+				background-image:url('../images/final_images/satellite_tiny.png');
+				background-repeat:no-repeat;
+				background-position:center;
+				background-size: 26px 26px;
+			}
+
+			#earth-arrow2 {top: 120px;
+							left: 05px}
+			#earth-text2 {
+				top: 113px;
+				left: 25px;
+			}	
+
+			#laser-arrow {
+				position: relative;
+				float: right;
+				top: -52px;
+				left: 95px;
+				width: 89px;
+				height: 16px;
+				background-image:url('../images/final_images/arrows/orange3.png');
+				background-repeat:no-repeat;
+				background-position:center;
+				background-size: 89px 16px;	
+			}
+
+			#laser-text {
+				position: relative;
+				color: #fff;
+				left: 100%;
+				font-family: 'Dosis', sans-serif;				
+				letter-spacing: 1px;
+				font-size: 16px;
+				text-align: center;
+			}
+
+			#laser-text p {
+				color: #f15a24;
+			}
+
+			#laser-right-microwave-arrow {
+				position: relative;
+				float: right;
+				top: 20px;
+				left: -30px;
+				width: 84px;
+				height: 126px;
+				background-image:url('../images/final_images/arrows/white.png');
+				background-repeat:no-repeat;
+				background-position:center;
+				background-size: 84px 126px;					
+			}
+
+			#laser-right-microwave-arrow-text {
+				position: relative;
+				text-transform: uppercase;
+				color: #fff;
+				left: -47px;
+				top: 102%;
+				font-family: 'Dosis', sans-serif;				
+				letter-spacing: 1px;
+				font-size: 16px;
+				text-align: center;	
+				width: 100px;
+			}
+
+
+
+/*pros cons*/
+		#pros-cons-container {
+			position: absolute;
+			width: 100%;
+			height: 1000px;
+			top: 2750px;
+			z-index: 60;
+		}	
+
+		#left-tab {
+			position: relative;
+			width: 45%;
+			float: left;
+			text-align: center;
+		}			
+
+		#right-tab {
+			position: relative;
+			width: 45%;
+			float: left;
+			text-align: center;
+			
+		}
+
+		#middle-tab {
+			position: relative;
+			width: 10%;
+			text-align: center;
+			float: left;
+		}
+
+		#mini-laser {
+			width: 50%;
+			position: relative;
+			float: left;
+			left: -50%;	
+		}
+
+		#mini-laser-inner {
+			position: relative;
+			margin: 0 auto;
+			width: 35%;
+		}
+
+		#mini-laser-inner img {
+			width: 100%;
+		}
+
+		#mini-microwave {
+			width: 50%;
+			position: relative;
+			float: left;
+			right: -50%;
+		}
+
+		#mini-microwave-inner {
+			position: relative;
+			margin: 0 auto;
+			top: 50px;
+			width: 70%;
+		}
+
+		#mini-microwave-inner img {
+			width: 100%;		
+		}
+
+		#yessir1, #yessir2 {
+			clear: both;
+		}
+
+		.pro-con-title {
+				position: relative;
+				width: 100%;
+				font-family: 'Dosis', sans-serif;				
+				font-size: 35px;
+				line-height: 55px;
+				color: #f15a24;
+				text-shadow: -2px 3px #333;
+			}
+
+
+		.middle-pro	{
+			width: 10%;
+			position: relative;
+			float: left;
+			text-align: center;
+		}
+
+		.left-pro {
+			position: relative;
+			width: 45%;
+			text-align: center;
+			min-height: 200px;
+			float: left;
+		}
+
+		.right-pro {
+			position: relative;
+			width: 45%;
+			text-align: center;
+			min-height: 200px;
+			float: left;
+			
+		}
+
+
+
+		#middle-con	{
+			width: 10%;
+			position: relative;
+			float: left;
+			text-align: center;
+		}
+
+		#left-con {
+			position: relative;
+			background-color: gray;
+			width: 45%;
+			text-align: center;
+			height: 400px;
+			float: left;
+		}
+
+		#right-con {
+			position: relative;
+			background-color: gray;
+			width: 45%;
+			text-align: center;
+			height: 400px;
+			float: left;
+		}
+
+
+
+		.procontext {
+			color: #ffffff;
+			font-size: 16px;
+			line-height: 20px;
+		}
+
+		.procontext p {
+			padding-top: 25px;
+		}
+
+		.right-text-container {width: 75%; float: left;position: relative;}
+		.left-text-container  {width: 75%; float: right; position: relative;}
+		#middle-pro-inner {position: relative;}
+		#middle-con-inner {position: relative;}
+
+		#proconspacer {width:100%;   clear: both}
+		#proconspacer #insidespacer {
+			width: 75%; 
+			border-bottom: 1px solid #f15a24; 
+			height: 60px; margin: 0 auto;}
+
+
+
+
+/*Moon*/
+
+#earth-moon-container {
+	position: absolute;
+	width: 118px;
+	height: 118px;
+	bottom: 190px;
+	left: 10%;
+}
+#earth-moon {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 65;
+	background-image:url('../images/final_images/icons_moon.png');
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size: 118px 118px;
+}
+
+.earthy-index {
+	z-index: 58 !important;
+}
+
+
+/*Final Mini Satellite*/
+
+#final-mini-satellite-container {
+	position: absolute;
+	width: 140px;
+	height: 107px;
+	bottom: 280px;
+	right: 20%;
+
+}
+#final-mini-satellite  {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 65;
+	background-image:url('../images/final_images/microwave3.png');
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size: 140px 107px;
+	transform:rotate(37deg);
+	-ms-transform:rotate(37deg); /* IE 9 */
+	-webkit-transform:rotate(37deg); /* Opera, Chrome, and Safari */
+}
+
+
+#final-mini-satellite-beam {
+	position: relative;
+	top: 100px;
+	left: 106px;
+	width: 32px;
+	height: 121px;
+	background-image:url('../images/final_images/icon_microwaves.png');
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size: 32px 121px;
+		transform:rotate(-25deg);
+	-ms-transform:rotate(-25deg); /* IE 9 */
+	-webkit-transform:rotate(-25deg); /* Opera, Chrome, and Safari */
+}
+
+
+/*comet*/
+#comet-container {
+	z-index: 52;
+	position: fixed;
+	top: 300px;
+	left: -100%;
+}
+
+#comet {
+	
+	position: relative;
+	top: 0px;
+	left: 0px;
+	width: 100px;
+	height: auto;
+}
+#comet img {width: 100%;}
+
+#top-box2 p {display: none;}
+
+
+@media (max-width:860px){
+	/*#arrow1 span {display: block ;}
+	#arrow2 { display: none;}*/
+	#sat img {
+		margin-top: -15px;
+	}
+	.right-text-container, .left-text-container {
+		width: 95%;
+	}
+}
+
+@media (max-width:790px){
+
+	#sun img{
+		margin-top: -70% ;
+	}
+
+	#cb1 {top:300px ; left:14% }
+	#cb2 {top:325px ; left: -14% }
+	#cb3 {top:350px ; left: 14% }
+
+
+	/*Lasers!!!*/
+	#laser-left {width: 100%}
+	#laser-right {
+		width: 100%;
+		top: 180px;
+	}
+	#laser-right-legend {
+		margin: 0 auto;
+		float: none;
+		width: 95%;
+		left: 0px;
+	}
+	#laser-left-large img {
+		width: 60%;
+	}
+	#laser-right-title {
+		float: none;
+		margin: 0 auto;
+		left: auto;
+	}
+	#laser-left-large {
+		right: 40px;
+		top: -40px;
+	}
+	#laser-left-beam {
+		top: 4.1%;
+		left: 50%;
+		width: 247%
+	}
+	/*Move the big blocks*/
+	#satellite-1-container {top: 1360px ;}
+	#distance-block {top: 1820px;}
+	#laser-container {top: 2130px;}
+	#pros-cons-container {top: 2850px;}
+
+}
+
+@media (max-width:700px){
+	
+	#top-box1 {
+		height: 100px ;
+	}
+
+	#top-box1 h1 {
+		font-size: 40px ;
+		padding-top: 30px ;
+	}
+
+	#top-box2 {
+		top: 100px ;
+		height: 55px ;
+	}
+
+	#top-box2 h2{
+		font-size: 18px ;
+		padding-top: 18px ;
+		letter-spacing: 0px ;
+	}
+
+/*mircowave satellite 1*/
+	.floating-text { 
+		width: 50%;
+	}
+
+	#arrow1 {
+		width: 48%;
+	}
+
+	#arrow2 {
+		width: 1%;
+	}
+	#text-and-arrow2 {
+		left: 90%;
+	}
+	#floating-context-2 {
+		margin-left:-35px;
+		clear: both;
+		margin-top: 7px;
+	}
+	#arrow4 {
+		margin-left: 32px;
+	}
+	
+	#a1 {display: none}
+	#a2 {
+		display: block;
+		margin-left: -7px !important;
+	}
+	/*Microwave distance*/
+	#distance-legend-microwave-arrow2 {
+		display: none;
+	}
+	#laser-left-large {
+		right: 30px;
+		top: 0px;
+	}
+	#laser-left-beam {
+		top:4.8%;
+		left:50.5%;
+		width: 221%;
+	}
+}
+
+@media (max-width:570px){
+	/*#container {
+		height: 320px;	
+	}*/
+	#sun img{
+		margin-top: -50% ;
+	}
+	
+	#top-box1 {
+		height: 80px ;
+	}
+
+	#top-box1 h1 {
+		font-size: 30px ;
+		padding-top: 25px ;
+	}
+
+	#top-box2 {
+		top: 80px ;
+	}
+
+	#top-box2 h2{
+		font-size: 18px ;
+		padding-top: 18px ;
+		letter-spacing: 0px ;
+	}
+	#top-box2 h2{
+		font-size: 18px ;
+		padding-top: 8px ;
+		letter-spacing: 0px ;
+	}
+
+/*manipulate ufo parts*/
+
+	 #ufo	{
+	 	left: -20px ;
+	 }
+
+	 #ufo-beam {
+	 	left: 9px ;
+	 }
+
+/*microwaves*/
+	.floating-text { 
+		width: 60%;
+	}
+
+	#arrow1 {
+		width: 38%;
+	}
+
+	#arrow2 {
+		width: 1%;
+	}
+	#distance-graphics {
+		width: 90%;
+	}
+/*lasers*/
+	
+
+	#laser-left-large img {
+		width: 70%;
+	}
+	#laser-left-text {
+		left: 10%;
+	}
+	#laser-left-mini-lasers {
+		left: 10%;
+	}
+	#laser-left-beam {
+		top: 5.5%;
+		left: 60%;
+		width: 224%;
+	}
+	html, body {height: 3950px !important;}
+	#skrollr-body {height: 3950px !important;}
+}
+
+@media (max-width:480px){
+/*	#container {
+		height:255px ;
+	}*/
+	#top-box1 h1 {
+		padding-top: 12px ;
+	}
+
+	.content-block {
+		height: auto ;
+	}
+
+	.content-block h2{
+		padding-top: 20px ;
+	}
+
+	.content-block p {
+		margin-left: 10px ;
+		margin-right: 10px ;
+	}
+/*first content blocks*/
+	#cb1 {left:	0 ; top: 500px ;}
+	#cb2 {left:	0 ; top:525px ;}
+	#cb3 {left:	0 ; top: 550px ;}
+
+/*UFos!*/
+	#ufo	{top: -100px ; left: 20px }
+
+	#ufo-beam {top: -18px ; left: 50px  }
+
+/*first satellite*/
+	.floating-header {left: 0px !important; text-align: center;}
+	.floating-header h3 span{ display: none; }
+
+	#sat img {
+		margin-top: 55px;
+	}
+	#text-and-arrow1 {
+		width: 52%;
+	}
+	.floating-text { 
+		width: 90%;
+	}
+
+	#arrow1 {
+		width: 8%;
+	}
+
+	#arrow2 {
+		width: 1%;
+		height: 50px;
+		line-height: 100px;
+	}
+
+	#sat 	{
+		width: 65%;
+	}
+	#text-and-arrow2 {
+		left: 50%;
+	}
+	#floating-context-2 {
+		margin-left:-90px;
+		clear: both;
+		margin-top: 7px;
+	}
+	#arrow3 {display: none;}
+	#arrow4 {margin-left: 90px;height: 50px;margin-top: 10px;}
+	
+	#a1 {display: none}
+	#a2 {
+		display: block;
+		margin-left: -7px !important;
+	}
+	#a3 {
+		display: block;
+		color: #fff;
+		font-size: 9px;
+		margin-top: -8px;
+		margin-left: -3px;
+	}
+	#distance-text h3 {
+		font-size: 18px;
+		line-height: 25px;
+	}
+	#distance-text {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	/*lasers*/
+	#laser-left-large {
+		right:-5px;
+		top: 60px;
+	}
+	#laser-arrow {
+		left: 58px;
+		width: 56px;
+		background-position: left;
+	}
+	#laser-text {
+		width: 76px;
+		left: 80%
+	}
+	#yessir2 {top: 35px; position: relative;}
+	#proconspacer #insidespacer {position: relative;top: 40px;}
+
+
+	/*pros and cons*/
+	.right-text-container, .left-text-container {font-size: 14px; line-height: 16px; width: 98%;}
+}
+
+
+@media (max-width:339px) {
+	#s1 {display: none}
+	#s2	{display: block;}	
+}
+
+
+@media (max-width:320px){
+}
+
+
+

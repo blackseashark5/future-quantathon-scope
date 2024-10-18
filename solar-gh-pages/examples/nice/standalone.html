@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html>
+<head class="no-skrollr">
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+	<title>Nice </title>
+	<link rel="stylesheet" type="text/css" href="../reset.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="http://futureofcarsharing.com/_media/js/jquery-css-transform.js"></script>
+	<script type="text/javascript" src="http://futureofcarsharing.com/_media/js/jquery-animate-css-rotate-scale.js"></script>
+
+	<style type="text/css">
+	/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+		html {
+    overflow-x: hidden;
+}
+
+#space-body {
+	position: relative;
+	width: 100%;
+	background-image: url('http://i.imgur.com/wYcYMtk.png');
+	/*background-color: rgba(2,2,2,0.9);*/
+	height: 3000px;
+}
+
+#sun {
+	margin: 0 auto;
+	height: 0px;
+}
+
+#sun img {
+	width: 100%;
+	margin-top:-50%;			
+}
+
+#earth {
+	position: absolute;
+	top: 1400px;
+	width: 30%;
+	left: 50%;
+	margin-left: -15%;
+
+}
+
+#earth img {
+	width: 100%;
+	margin: 0 auto;
+	display: block;
+}
+
+.satellite {
+	position: absolute;
+	top: 1000px;
+	width: 300px;
+	height: 200px;
+	left: 50%;
+	margin-left: -15%;	
+	background-image:url('http://www.spacepretzel.com/pics/satellite.png');
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size: 300px 200px;
+}
+	#sun {
+		border: 1px solid black;
+		/*-webkit-transform:rotate(120deg);*/
+	}
+
+	</style>
+</head>
+
+<body>
+	<div id="space-body">
+		<div class="planet" id="sun">
+			<img src="http://th00.deviantart.net/fs70/PRE/i/2010/266/7/9/golden_planet_sun_png_by_ravenmaddartwork-d2zauun.png">
+		</div>
+		<div id="moveMe" class="satellite">
+<!-- 			<img src="../images/satellite.png">
+ -->		</div>
+		<div class="planet" id="earth">
+			<img src="http://th00.deviantart.net/fs71/PRE/i/2010/266/b/e/strange_planet_png_by_ravenmaddartwork-d2zau51.png">
+		</div>
+	</div>
+
+	<script type="text/javascript">
+	// var s = skrollr.init();
+
+
+	// SUN ANIMATION
+// SUN ANIMATION
+$(document).ready(function sunAnimation() {
+    $("#sun").
+      animate({rotate:'+=360deg'},30000, sunAnimation);
+	$("#earth").
+	animate({rotate:'+=360deg'},30000, sunAnimation);
+});
+
+	</script>
+
+	<script type="text/javascript">
+	var ElementRevolver = (function() {
+    
+    function getPosition(settings, ellapsedTime) {
+        var angle = getAngle(settings, ellapsedTime);
+        return {
+            x: Math.round(settings.center.x + (800) * Math.cos(angle)),
+            y: Math.round(settings.center.y + (800) * Math.sin(angle))
+        };
+    }
+    
+    function getAngle(settings, ellapsedTime) {
+        return ellapsedTime / settings.interval * 2 * Math.PI * settings.direction - settings.startPositionRad;
+    }
+    
+    function start(id, settings) {
+        var el = document.getElementById(id),
+            startTime = (new Date()).getTime(),
+            width = el.offsetWidth,
+            height = el.offsetHeight;
+        if(el['#rev:tm'] !== null) stop(id);
+        el.style.position = settings.cssPosition || 'absolute';
+        if(!settings.startPositionRad) settings.startPositionRad = settings.startPositionDeg / 180 * Math.PI;
+        el['#rev:tm'] = setInterval(function() {
+            var pos = getPosition(settings, (new Date()).getTime() - startTime);
+            el.style.left = (pos.x - Math.round(width / 2)) + 'px';
+            el.style.top = (pos.y - Math.round(height / 2)) + 'px';
+        }, settings.updateInterval);
+        if(settings.iterations > -1) setTimeout(function() {
+            stop(id);
+        }, settings.iterations * settings.interval);
+    }
+    
+    function stop(id) {
+        var el = document.getElementById(id);
+        if(el['#rev:tm'] === null) return;
+        clearInterval(el['#rev:tm']);
+        el['#rev:tm'] = null;
+    }
+    
+    return {
+        start: start,
+        stop: stop
+    };
+    
+})();
+
+ElementRevolver.start('moveMe', {
+    radius: 1500,
+    center: { x: 750, y: 000 },
+    // time in milliseconds for one revolution
+    interval: 19000,
+    // direction = 1 for clockwise, -1 for counterclockwise
+    direction: 1,
+    // number of times to animate the revolution (-1 for infinite)
+    iterations: -1,
+    // startPosition can be a degree angle
+    // (0 = right, 90 = top, 180 = left, 270 = bottom)
+    startPositionDeg: 90,
+    // how often (in milliseconds) the position of the
+    // circle should be attempted to be updated
+    updateInterval: 50
+});
+
+
+	</script>
+</body>
+
+</html>
